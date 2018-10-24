@@ -6,8 +6,10 @@ describe("Calculator", function(){                  //description
         it("should return 26", function(){          //assertion
             expect(addition(7,19)).toBe(26);        //expectation
         });
-        it("should return an error if we don't supply two numbers", function(){     //assertion
-            expect(addition('Hitchhikers', 'Guide')).toBe("Error!");                //expectation
+        it("should have called the alert function if either number is undefined", function () {
+            spyOn(window, "alert");     //spy checks, if fuction has been called
+            addition("Hello", "There");
+            expect(window.alert).toHaveBeenCalledWith("Error!");
         });
     });                                                   
 });
